@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="web" name="Web">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/WebContent/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/WebContent" relative="/" />
+        </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/b2b2c" />
+          <root url="file://$MODULE_DIR$/base-core" />
+          <root url="file://$MODULE_DIR$/cms" />
+          <root url="file://$MODULE_DIR$/cms-core" />
+          <root url="file://$MODULE_DIR$/eop" />
+          <root url="file://$MODULE_DIR$/shop" />
+          <root url="file://$MODULE_DIR$/shop-core" />
+          <root url="file://$MODULE_DIR$/resource" />
+        </sourceRoots>
+      </configuration>
+      <facet type="Struts2" name="Struts 2">
+        <configuration>
+          <fileset id="s2fileset" name="My Fileset " removed="false">
+            <file>file://$MODULE_DIR$/eop/struts-base.xml</file>
+            <file>file://$MODULE_DIR$/cms/struts-cms.xml</file>
+            <file>file://$MODULE_DIR$/shop/struts-shop.xml</file>
+            <file>file://$MODULE_DIR$/resource/struts.xml</file>
+            <file>jar://$MODULE_DIR$/WebContent/WEB-INF/lib/struts2-spring-plugin-2.3.4.jar!/struts-plugin.xml</file>
+            <file>jar://$MODULE_DIR$/WebContent/WEB-INF/lib/struts2-core-2.3.4.jar!/struts-default.xml</file>
+            <file>jar://$MODULE_DIR$/WebContent/WEB-INF/lib/struts2-convention-plugin-2.3.4.jar!/struts-plugin.xml</file>
+          </fileset>
+          <propertiesKeys disabled="false" />
+        </configuration>
+      </facet>
+    </facet>
+    <facet type="javaeeApplication" name="javaEEApplication">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="application.xml" url="file://$MODULE_DIR$/WebContent/editor/ckeditor362/_samples/adobeair/application.xml" />
+        </descriptors>
+      </configuration>
+    </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/cms/spring/cmsPluginContext.xml</file>
+          <file>file://$MODULE_DIR$/cms/spring/cmsApplicationService.xml</file>
+          <file>file://$MODULE_DIR$/eop/spring/baseActionContext.xml</file>
+          <file>file://$MODULE_DIR$/eop/spring/basePluginContext.xml</file>
+          <file>file://$MODULE_DIR$/eop/spring/baseServiceContext.xml</file>
+          <file>file://$MODULE_DIR$/eop/spring/dataAccessContext-jdbc.xml</file>
+          <file>file://$MODULE_DIR$/shop/spring/shopPluginContext.xml</file>
+          <file>file://$MODULE_DIR$/b2b2c/spring/b2b2cActionContext.xml</file>
+          <file>file://$MODULE_DIR$/WebContent/out/artifacts/javashop_b2b2c_war_exploded/WEB-INF/lib/component-cms/spring/cmsPluginContext.xml</file>
+          <file>file://$MODULE_DIR$/WebContent/out/artifacts/javashop_b2b2c_war_exploded/WEB-INF/lib/component-cms/spring/cmsApplicationService.xml</file>
+          <file>file://$MODULE_DIR$/WebContent/out/artifacts/javashop_b2b2c_war_exploded/WEB-INF/lib/component-eop/spring/baseActionContext.xml</file>
+          <file>file://$MODULE_DIR$/WebContent/out/artifacts/javashop_b2b2c_war_exploded/WEB-INF/lib/component-eop/spring/basePluginContext.xml</file>
+          <file>file://$MODULE_DIR$/WebContent/out/artifacts/javashop_b2b2c_war_exploded/WEB-INF/lib/component-eop/spring/ApplicationContext.xml</file>
+          <file>file://$MODULE_DIR$/WebContent/out/artifacts/javashop_b2b2c_war_exploded/WEB-INF/lib/component-eop/spring/baseServiceContext.xml</file>
+          <file>file://$MODULE_DIR$/WebContent/out/artifacts/javashop_b2b2c_war_exploded/WEB-INF/lib/component-eop/spring/ApplicationContext-mq.xml</file>
+          <file>file://$MODULE_DIR$/WebContent/out/artifacts/javashop_b2b2c_war_exploded/WEB-INF/lib/component-eop/spring/dataAccessContext-jdbc.xml</file>
+          <file>file://$MODULE_DIR$/WebContent/out/artifacts/javashop_b2b2c_war_exploded/WEB-INF/lib/component-shop/spring/shopPluginContext.xml</file>
+          <file>file://$MODULE_DIR$/WebContent/out/artifacts/javashop_b2b2c_war_exploded/WEB-INF/lib/component-b2b2c/spring/b2b2cActionContext.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/out/production/javashop_b2b2c" />
+    <output-test url="file://$MODULE_DIR$/out/test/javashop_b2b2c" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/b2b2c" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/base-core" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cms" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cms-core" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/eop" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/shop" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/shop-core" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/resource" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/jar" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/baozhen" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="yuicompressor-2.4.21" level="project" />
+    <orderEntry type="library" name="jars" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/WebContent/WEB-INF/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/WebContent/WEB-INF/lib" />
+          <root url="jar://$USER_HOME$/.ideaLibSources/activation-1.1-sources.jar!/" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/WebContent/WEB-INF/lib" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/WebContent/WEB-INF/lib" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://F:/software/JAVA EE_6" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://F:/software/JAVA EE_6" recursive="false" />
+      </library>
+    </orderEntry>
+  </component>
+</module>

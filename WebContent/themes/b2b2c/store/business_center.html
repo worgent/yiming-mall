@@ -1,0 +1,8 @@
+<#assign checkB2b2cMemberTag=newTag("checkB2b2cMemberTag")>
+<#assign storeMember=checkB2b2cMemberTag()>
+
+<#if storeMember.is_store!=1>
+	<#include '/create_store.html' />
+	<#else>
+	<#include '/store.html' />
+</#if>

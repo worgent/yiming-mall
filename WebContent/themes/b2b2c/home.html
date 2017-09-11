@@ -1,0 +1,85 @@
+<#include 'common/header.html' /> 
+
+<!-- 创建店铺信息标签 -->
+<#assign checkUrlTag= newTag("checkUrlTag")>
+<!-- 调用查询店铺信息标签 -->
+<#assign checkUrl = checkUrlTag("{'show_c':${show_c!0},'store_id':${store_id!0}}")!''>
+
+
+<link rel="stylesheet" type="text/css" href="${ctx}/themes/b2b2c/css/shop.css" />
+<link rel="stylesheet" type="text/css" href="${ctx}/themes/b2b2c/css/home_login.css" />
+<link rel="stylesheet" type="text/css" href="${ctx}/themes/b2b2c/css/store_style.css" />
+
+<script src="${ctx}/themes/b2b2c/js/shop.js" ></script>
+<script src="${ctx}/themes/b2b2c/js/utils.js" ></script>
+<script src="${ctx}/themes/b2b2c/js/member.js" ></script>
+
+<!-- 创建店铺信息标签 -->
+<#assign myStoreDetailTag= newTag("myStoreDetailTag")>
+<!-- 调用查询店铺信息标签 -->
+<#assign store = myStoreDetailTag("{'type':0,'store_id':${store_id!0}}")!''>
+
+<!-- 创建店铺导航标签 --> 
+<#assign storeNavigationTag= newTag("storeNavigationTag") > 
+<!-- 查询店铺导航列表 --> 
+<#assign storeNavigation= storeNavigationTag("{'store_id':${store_id!0}}")!''>
+
+<!-- 店铺顶部图片 -->
+<#include 'home/home_top.html' />
+
+<div class="background clearfix">
+	<div class="ncsl-nav">
+		<div class="ncs-default-banner pngFix">
+		<#if store.store_banner??>
+			<@image alt="" src="${store.store_banner!''}" width="1000" height="325" />
+		<#else>
+			<img src="${ctx}/themes/b2b2c/images/home_def.jpg" id="img_store_banner" >
+		</#if>
+		</div>
+		<nav id="nav" class="pngFix">
+			<ul class="pngFix">
+				<li class="normal <#if show_c=='1'>active</#if> ">
+					<a href="home.html?show_c=1&store_id=${store_id}"><span>店铺首页<i></i></span>
+					</a>
+				</li>
+				<li class="normal <#if show_c=='2'>active</#if>">
+					<a href="home.html?show_c=2&store_id=${store_id}"><span>信用评价<i></i>
+					</span> </a>
+				</li>
+				<li class="normal <#if show_c=='3'>active</#if>">
+					<a href="home.html?show_c=3&store_id=${store_id}"><span>店铺详情<i></i>
+					</span> </a>
+				</li>
+				
+				<#list storeNavigation as sl> 
+				<li class="normal">
+					<a target="<#if sl.target==1 >_blank</#if>" href="${sl.nav_url!''}">
+						<span>${sl.name}<i></i></span>
+					</a>
+				</li>
+				</#list>
+			</ul>
+		</nav>
+	</div>
+	<div style="width: 1000px; overflow: hidden; margin: 0 auto;"></div>
+		
+	<article id="content">
+		<section class="layout <#if show_c!='3'> expanded mt10 </#if>">
+			<#if show_c=='2' >
+				<#include 'home/home_credit.html' />
+			<#elseif show_c='3' >
+				<#include 'home/home_info.html' />
+			<#elseif show_c='4' >
+				<#include 'home/home_goods_all.html' />
+			<#else>	
+				<#include 'home/home_context.html' /> 
+			</#if>	
+		</section>
+	</article>
+</div>
+
+<!-- 店铺优惠卷领取 -->
+<#include 'home/home_bonus.html' /> 
+
+
+<#include 'common/footer.html' /> 

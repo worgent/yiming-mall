@@ -1,0 +1,94 @@
+<#include 'common/header.html' />
+<#include 'common/reception_header.html'/>
+<link rel="stylesheet" type="text/css" href="http://shopnc.javamall.com.cn/templates/default/new-css/home_group.css" />
+ 
+<#assign groupBuyListTag=newTag("groupBuyListTag")> 
+<#assign gbPage=groupBuyListTag()>
+
+ <div class="nch-breadcrumb-layout">
+  <div class="nch-breadcrumb wrapper"><i class="icon-home"> </i>
+    		     <span><a href="index.php">首页</a></span><span class="arrow">&gt;</span>
+			    <span>团购</span>
+			  </div>
+</div>
+
+
+<div class="ncg-container wrapper">
+  <div class="ncg-nav">
+    <div class="info">
+      <h4>第<em>元旦大促销</em>期团购:</h4>
+      <span class="time">2015年01月09日 00:00</span><span>至</span><span class="time">2015年01月24日 00:00</span> </div>
+        <ul>
+      <li class="current"><a href="index.php?act=show_groupbuy&amp;op=groupbuy_list">商品团购</a></li>
+	  
+      <li><a href="index.php?act=show_groupbuy&amp;op=groupbuy_soon">即将开始</a></li>
+      <li><a href="index.php?act=show_groupbuy&amp;op=groupbuy_history">往期团购</a></li>
+    </ul>
+  </div>
+    <div class="ncg-screen"> 
+  <div class="fenlei">
+    <!-- 分类过滤列表 -->
+    <dl>
+      <dt>分类:</dt>
+      <dd class="nobg selected"><a onclick="set_groupbuy_class('')" href="javascript:void(0)">不限</a></dd>
+                        <dd> <a onclick="set_groupbuy_class('2')" href="javascript:void(0)">运动户外</a> </dd>
+                        <dd> <a onclick="set_groupbuy_class('3')" href="javascript:void(0)">数码家电</a> </dd>
+                        <dd> <a onclick="set_groupbuy_class('4')" href="javascript:void(0)">家具家装</a> </dd>
+                        <dd> <a onclick="set_groupbuy_class('5')" href="javascript:void(0)">影音娱乐</a> </dd>
+                        <dd> <a onclick="set_groupbuy_class('1')" href="javascript:void(0)">服装配饰</a> </dd>
+                      </dl>
+    <!-- 价格过滤列表 -->
+    <dl>
+      <dt>价格:</dt>
+      <dd class="nobg selected"><a onclick="set_groupbuy_price('')" href="javascript:void(0)">不限</a></dd>
+                  <dd> <a onclick="set_groupbuy_price('1')" href="javascript:void(0)">500元以下</a> </dd>
+            <dd> <a onclick="set_groupbuy_price('2')" href="javascript:void(0)">501元-1000元</a> </dd>
+            <dd> <a onclick="set_groupbuy_price('3')" href="javascript:void(0)">1001元-2000元</a> </dd>
+            <dd> <a onclick="set_groupbuy_price('4')" href="javascript:void(0)">2001元-3000元</a> </dd>
+            <dd> <a onclick="set_groupbuy_price('5')" href="javascript:void(0)">3001元以上</a> </dd>
+                </dl>
+    <dl class="ncg-sortord">
+      <dt>排序:</dt>
+      <!--排序-->
+      <dd class="nobg selected"><a onclick="set_groupbuy_order('')" href="JavaScript:void(0);">默认</a></dd>
+      <dd><a onclick="set_groupbuy_order('price')" href="javascript:void(0)">价格</a></dd>
+      <dd><a onclick="set_groupbuy_order('rebate')" href="javascript:void(0)">折扣</a></dd>
+      <dd><a onclick="set_groupbuy_order('sale')" href="javascript:void(0)">销量</a></dd>
+    </dl></div>
+	<div class="dc"> 
+      <!-- 倒计时 距离本期结束 -->
+      <h5>距离本期结束</h5>
+      <p><i class="icon-chronometer"></i><span id="d1">11</span><strong>天</strong><span id="h1">6</span><strong>小时</strong><span id="m1">20</span><strong>分</strong><span id="s1">57</span><strong>秒</strong></p>
+      <script type="text/javascript">
+                 tms[tms.length] = "973602";
+                 day[day.length] = "d1";
+                 hour[hour.length] = "h1";
+                 minute[minute.length] = "m1";
+                 second[second.length] = "s1";
+             </script> 
+    </div>
+  </div>
+  <!-- 团购活动列表 -->
+    <div class="group-list">
+    <ul>
+            <li class="c1">
+        <div class="ncg-list-content"> <a target="_blank" class="pic-thumb" href="index.php?act=show_groupbuy&amp;op=groupbuy_detail&amp;group_id=5&amp;id=3" title="测试"><img alt="" src="http://shopnc.javamall.com.cn/upload/groupbuy/31ea055d4a48582ed8055ff098ad6734.jpg_mid.jpg"></a>
+          <h3 class="title"><a target="_blank" href="index.php?act=show_groupbuy&amp;op=groupbuy_detail&amp;group_id=5&amp;id=3" title="测试">测试</a></h3>
+		  
+          <div class="item-prices"> <span class="price"><i>¥</i>80.00</span>
+            <div class="dock"><span class="limit-num">8.00&nbsp;折</span> <del class="orig-price">¥100.00</del></div>
+			
+            <span class="sold-num"><em>10</em>件已购买</span>
+						<a class="buy-button" target="_blank" href="index.php?act=show_groupbuy&amp;op=groupbuy_detail&amp;group_id=5&amp;id=3">我要团</a>
+						</div>
+        </div>
+      </li>
+          </ul>
+	   </div>
+ <!--分页-->
+      <div class="tc mt20 mb20">
+    <div class="pagination"> <ul><li><span>首页</span></li><li><span>上一页</span></li><li><span class="currentpage">1</span></li><li><span>下一页</span></li><li><span>末页</span></li></ul> </div>
+  </div>
+    </div>
+<div class="clear"></div>
+<#include 'common/footer.html'/>

@@ -1,0 +1,175 @@
+<section class="layout expanded mt10">
+	<article class="nc-goods-main">
+		<!-- 商品评分统计信息S -->
+		<div class="nc-s-c-s2">
+			<div class="title">
+				<h4>好评率 ( 0 % )</h4>
+			</div>
+			<div class="content">
+				<table class="ncs-evaluation-tb">
+					<thead>
+						<tr>
+							<th></th>
+							<td class="ncse-good"><span class="ico pngFix"></span>好评</td>
+							<td class="ncse-normal"><span class="ico pngFix"></span>中评</td>
+							<td class="ncse-bad"><span class="ico pngFix"></span>差评</td>
+							<td class="ncse-sum">总计</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>最近1周</th>
+							<td class="ncse-good">0</td>
+							<td class="ncse-normal">0</td>
+							<td class="ncse-bad">0</td>
+							<td class="ncse-sum">0</td>
+						</tr>
+						<tr>
+							<th>最近1个月</th>
+							<td class="ncse-good">0</td>
+							<td class="ncse-normal">0</td>
+							<td class="ncse-bad">0</td>
+							<td class="ncse-sum">0</td>
+						</tr>
+						<tr>
+							<th>最近6个月</th>
+							<td class="ncse-good">0</td>
+							<td class="ncse-normal">0</td>
+							<td class="ncse-bad">0</td>
+							<td class="ncse-sum">0</td>
+						</tr>
+						<tr>
+							<th>6个月前</th>
+							<td class="ncse-good">0</td>
+							<td class="ncse-normal">0</td>
+							<td class="ncse-bad">0</td>
+							<td class="ncse-sum">0</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>总计</th>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+							<td>0</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+		<!-- 商品评分统计信息E -->
+		<div class="nc-s-c-s2 mt10">
+			<div class="title">
+				<h4>店铺半年内动态评分</h4>
+			</div>
+			<div class="content">
+				<div class="ncs-rate clearfix">
+					<ul class="ncs-rate-tab">
+						<li class="current">
+							<a href="javascript:void(0);">宝贝与描述相符：&nbsp;&nbsp;<em>0</em>分</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);">卖家的服务态度：&nbsp;&nbsp;<em>0</em>分</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);">卖家的发货速度：&nbsp;&nbsp;<em>0</em>分</a>
+						</li>
+					</ul>
+					<dl class="ncs-rate-icos">
+						<dd class="rate-star">
+							<em><i style="width: 100%"></i> </em><span>5分</span>
+						</dd>
+						<dd class="rate-star">
+							<em><i style="width: 80%"></i> </em><span>4分</span>
+						</dd>
+						<dd class="rate-star">
+							<em><i style="width: 60%"></i> </em><span>3分</span>
+						</dd>
+						<dd class="rate-star">
+							<em><i style="width: 40%"></i> </em><span>2分</span>
+						</dd>
+						<dd class="rate-star">
+							<em><i style="width: 20%"></i> </em><span>1分</span>
+						</dd>
+					</dl>
+					<ul class="ncs-rate-panel ">
+						<li>暂无人打分</li>
+						<li>暂无人打分</li>
+						<li>暂无人打分</li>
+						<li>暂无人打分</li>
+						<li>暂无人打分</li>
+					</ul>
+					<ul class="ncs-rate-panel hide">
+						<li>暂无人打分</li>
+						<li>暂无人打分</li>
+						<li>暂无人打分</li>
+						<li>暂无人打分</li>
+						<li>暂无人打分</li>
+					</ul>
+					<ul class="ncs-rate-panel hide">
+						<li>暂无人打分</li>
+						<li>暂无人打分</li>
+						<li>暂无人打分</li>
+						<li>暂无人打分</li>
+						<li>暂无人打分</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</article>
+	<aside class="nc-sidebar">
+		<!--店铺基本信息 S-->
+		<div class="ncs-info clearfix">
+			<#include 'store_base.html' />
+		</div>
+		<div class="clear"></div>
+		<!--店铺基本信息 E-->
+	</aside>
+</section>
+
+<div class="clear"></div>
+
+<div class="nc-s-c-s3 ncs-comment mt10">
+	<div class="title">
+		<h4>评价</h4>
+	</div>
+	<div class="content">
+		<div class="ncs-loading" id="goodseval">
+			<table cellspacing="0" cellpadding="0" border="0" width="998" id="t"
+				class="nc-comment">
+				<thead class="type">
+					<tr>
+						<td colspan="2"><div>
+								<input type="radio"
+									href="#"
+									nc_type="sform" checked="" value="0" id="allRate" name="evalscore"> 
+								<label for="allRate">全部评价</label> 
+									<input type="radio"
+									href="#"
+									nc_type="sform" value="1" id="goodRate" name="evalscore">
+								<label for="goodRate">好评</label> <input type="radio"
+									href="#"
+									nc_type="sform" value="2" id="mediumRate" name="evalscore">
+								<label for="mediumRate">中评</label> <input type="radio"
+									href="#"
+									nc_type="sform" value="3" id="worstRate" name="evalscore">
+								<label for="worstRate">差评</label>
+							</div>
+						</td>
+						<td class="tc w150"><div>评价人</div>
+						</td>
+						<td class="w400"><div>商品信息</div>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="ncs-norecord" colspan="10">暂无符合条件的数据记录</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+

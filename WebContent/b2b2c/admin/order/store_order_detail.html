@@ -1,0 +1,45 @@
+<#include '/admin/header.html' >
+	<#list orderChildList as order>
+    <table style="width: 100%;">
+		<tr><th class="title">订单号：${order.storeOrder.sn }</th></tr>
+	</table>
+	<div class="detail">
+		<table cellspacing="0" cellpadding="0" border="0" id="orderbasedata">
+			<thead>
+				<tr>
+					<th>货号</th>
+					<th>订单商品</th>
+					<th>购买量</th>
+					<th>计价单位</th>
+					<th>单价 </th>
+					<th>合计</th>
+				</tr>
+			</thead>
+	        <tbody>
+		        <#list order.goodsList  as item>
+			         <tr>
+					      <td>${item.sn }  </td>
+				          <td><a target="_blank" href="${ctx}/goods-${item.goods_id }.html">
+				          
+				          ${item.name }
+				          <#if item.other??>
+				         (${item.other!''}) 
+				          </#if>
+				          
+				          </a>
+ 						  </td>
+				          <td>${item.num }</span></td>
+				          <td>${item.unit!''}</td>
+				          <td> ${item.price} </td>
+				          <td> ${item.price*item.num} </td>
+			        </tr>
+				</#list>
+	        </tbody>
+		</table>
+	</div>
+	</#list>
+
+
+
+
+<#include '/admin/footer.html' >

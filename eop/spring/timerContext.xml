@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+ 
+<beans>
+	
+	<!-- 每天执行task -->		 
+	<bean id="everyDayTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		 
+		<property name="targetObject">
+			<ref bean="jobExecuter" />
+		</property>
+		 
+		<property name="targetMethod">
+			<value>everyDay</value>
+		</property>
+	</bean>
+	
+	<!-- 每小时执行task -->	
+	<bean id="erverHourTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		 
+		<property name="targetObject">
+			<ref bean="jobExecuter" />
+		</property>
+		 
+		<property name="targetMethod">
+			<value>everyHour</value>
+		</property>
+	</bean>
+	
+
+	<!-- 每天执行表达式，每晚23：30 -->
+	<bean id="erverDayTime"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="everyDayTask" />
+		</property>
+		 
+		<property name="cronExpression">
+			<value>0 30 23 * * ?</value>
+		</property>
+	</bean>
+	
+	<!--  每小时执行表达式 -->
+	<bean id="erverHourTime"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="erverHourTask" />
+		</property>
+		 
+		<property name="cronExpression">
+			<value>0 0 0/1 * * ?</value>
+		</property>
+		 
+	</bean>
+	
+	
+	<!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序   -->
+	<bean id="startQuertz" lazy-init="false" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="erverDayTime" />
+				<ref bean="erverHourTime" />
+			</list>
+		</property>
+	</bean>
+
+</beans>

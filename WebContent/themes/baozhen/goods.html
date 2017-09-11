@@ -1,0 +1,314 @@
+<#include 'common/header.html' />
+<#include 'common/reception_header.html'/>
+<#-- 创建商品基本信息标签 -->
+<#assign goodsBaseDataTag= newTag("goodsBaseDataTag") >
+<#-- 调用标签获取商品基本信息 -->
+<#assign goods= goodsBaseDataTag("'goodsid':${goodsid!0}") >
+<#--获取商品店铺信息 -->
+<#assign storeInfoTag=newTag("myStoreDetailTag")>
+<#assign storeInfo=storeInfoTag("{'store_id':${goods.store_id},'type':1 }")>
+<#--店铺分类 -->
+<#assign storeGoodsCatTag=newTag("storeGoodsCatTag")>
+<#assign goodsCat=storeGoodsCatTag("{'catid':${goods.cat_id} }")>
+<#-- 创建商品相册标签 -->
+<#assign goodsGalleryTag= newTag("goodsGalleryTag")>
+<#-- 调用标签获取商品相册信息 -->
+<#assign galleryList= goodsGalleryTag("{'goods_id':${goods.goods_id}}")!'' >
+<link rel="stylesheet" type="text/css" href="${ctx}/themes/b2b2c/css/shop.css" />
+<link rel="stylesheet" type="text/css" href="${ctx}/themes/b2b2c/css/goods.css" />
+<link rel="stylesheet" type="text/css" href="${ctx}/themes/b2b2c/css/store_style.css" />
+<link rel="stylesheet" type="text/css" href="${ctx}/themes/b2b2c/css/dialog.css" />
+<script  src="${ctx}/themes/b2b2c/js/magiczoom.js"  ></script>
+<script  src="${ctx}/themes/b2b2c/js/Goods.js"  ></script>
+<script  src="${ctx}/themes/b2b2c/js/favorite.js"  ></script>
+<script  src="${ctx}/themes/b2b2c/js/Comment.js"  ></script>
+<div class="clear"></div>
+<style type="text/css">
+body{background:0}
+#content{width:1200px}
+.expanded .nc-goods-main.nc-goods-main{width:980px}
+.expanded .nc-sidebar{width:210px}
+.nc-goods-main{width:1200px}
+.wrapper{width:1200px;}
+</style>
+<script type="text/javascript">
+$(function(){
+	Goods.init();
+	CommentList.init();
+	CommentForm.init();	
+	
+	$(".nc-s-c-s4").hide();
+	$(".tabGoodsIntro").show();
+	$("#categorymenu li").click(function(){
+		$("#categorymenu li").removeClass("current");
+		$(".nc-s-c-s4").hide();
+		$(this).addClass("current");
+		$("."+$(this).attr("tab")).show();;
+	});
+})
+</script>
+<div class="background clearfix">
+	<article id="content">
+    	<div class="nch-breadcrumb-layout">
+  			<div class="nch-breadcrumb wrapper">
+    		    <span><a href="${ctx}/index.html">首页</a></span>
+    		    <span class="arrow">&gt;</span>
+			    <span><a href="${ctx}/goods_list.html?namekeyword=${goodsCat.cat.name}&search=goods">${goodsCat.cat.name!''}</a></span>
+			    <span class="arrow">&gt;</span>
+			    <span>${goods.name}</span>
+			</div>
+		</div>
+		<section class="nc-detail">
+            <div class="nc-detail-bd" id="detail_wrapper"> 
+            	<#list galleryList as gallery>
+					<#if gallery.isdefault==1>
+						<#assign big="${gallery.big!''}" />
+						<#assign small="${gallery.small!''}" />
+					</#if>
+				</#list>
+       			<aside class="gallery" >
+         			<!-- 商品相册 -->
+					<div class="gallery">	
+						<div class="preview">
+							 <a href="${big!''}"  id="zoom" rel="zoom-width:400px;zoom-height:400px;"  class="MagicZoom"> 
+							 	<img   src="${small!''}" style="width: 300px;height: 300px;" />
+							 </a>
+						</div>
+						<div class="control_bar">
+							<div class="control left-control"></div>
+							<div class="thumblist">
+								<ul>
+								<#list galleryList as gallery>
+									<li <#if !gallery_has_next>class="last"</#if> <#if gallery.isdefault==1>class="selected"</#if>> 
+										<@image src="${gallery.tiny!''}"  big="${gallery.big}" small="${gallery.small}" width="40" height="40"  />
+									</li>
+								</#list>	
+								</ul>
+							</div>
+							<div class="control right-control " ></div>
+						</div>
+					</div>
+       			</aside>
+			        <article class="goods-summary">
+						<div class="name">
+        					<h1>${goods.name}(${goods.sn})</h1>
+        					<strong></strong>
+        				</div>
+          				<div class="nc-meta"> 
+				            <dl class="nc-detail-price ">
+				              	<dt>价&#12288;&#12288;格：</dt>
+				              	<dd><strong nctype="goods_price">&yen;${goods.price}</strong></dd>
+				            </dl>
+							<ul class="tm-ind-panel">
+								<li class="tm-ind-item tm-ind-sellCount">
+									<p class="tm-count"><em><a href="#ncGoodsTraded">${goods.buy_num!'0'}</a></em></p>
+									<p class="tm-label">累计售出</p>
+								</li>
+								<li class="tm-ind-item tm-ind-reviewCount tm-line3" id="J_ItemRates">
+									<p class="tm-count" id="comment_num"><em>${goods.comment_num!'0'}</em></p>
+									<p class="tm-label">条评论</p><p class="raty ra" data-score="0"></p>
+								</li>
+								<li class="tm-ind-item tm-ind-emPointCount">
+									<a target="_blank">
+										<p class="tm-count"><em>全新</em></p>
+										<p class="tm-label">商品类型</p>
+									</a>
+								</li>
+							</ul>
+          				</div>
+          				<form  id="goodsform">
+          					<input type="hidden" name="goodsid" value="${goods.goods_id}" />
+          					<input type="hidden" id="storeid" value="${storeInfo.store_id}" />
+	                    	<div class="nc-key"> 
+					            <dl>
+					              	<dt>购买数量：</dt>
+					              	<dd class="nc-figure-input"> 
+					              		<a href="javascript:void(0)" ><i class="icon-minus decrease fl text-hidden" style="padding:2px 5px">-</i></a>
+					                	<input type="text" name="num" id="quantity" value="1" size="3" maxlength="6" class="fl" style="border-radius:0;">
+					                	<a href="javascript:void(0)" ><i class="icon-plus increase fl text-hidden" style="padding:2px 5px">+</i></a> 
+					                	<em class="fl ml20">(当前库存<strong nctype="goods_stock">${goods.store!'0'}</strong>件)</em> 
+					                </dd>
+									<div class="clear"></div>
+					            </dl>
+					            
+					            <#if goods.store==0>
+					            	<div class="nc-btn clearfix">
+					            		<p>抱歉，暂无库存</p>
+					            	</div>
+					            <#else>
+	            				<div class="nc-btn clearfix">
+	                            	<a href="javascript:void(0);" class="buynow fl " title="立即购买" id="buyNow">立即购买</a><!-- 立即购买--> 
+	              					<a href="javascript:void(0);" class="addcart fl ml10 " title="添加到购物车" id="addCart">添加到购物车<!-- 加入购物车--></a> 
+	                          	</div>
+	                          	</#if>
+	                          	
+	                          	
+								<div class="clear"></div>
+	          				</div>
+          				</form>
+		          		<div class="ncs_share">
+			            	<div class="ncs-goods-handle fl ml10">
+			              		<div class="handle-left"><i class="share-goods"></i><a href="javascript:void(0);" class="favorite" goodsid="${goods.goods_id}">收藏商品</a></div>
+			            	</div>
+		             		<div class="clear"></div>
+		          		</div>
+        			</article>
+     				<div class="ncg-store"style=" position: absolute; z-index: 1; top: 60px; right: 0;">
+      					<div class="title">店铺信息</div>
+        				<div class="content">
+       						<div class="ncg-store-info">
+	          					<dl class="name">
+						            <dt>商　　家：</dt>
+						            <dd> ${storeInfo.store_name} </dd>
+	          					</dl>
+					          	<dl class="all-rate">
+					            	<dt>综合评分：</dt>
+					            	<dd>
+					              		<div class="rating"><span style="width:0%;"></span></div>
+					              		<em>${(storeInfo.store_desccredit+storeInfo.store_servicecredit+storeInfo.store_deliverycredit)/3}</em>分 
+					              	</dd>
+					          	</dl>
+	          					<div class="detail-rate">
+	            					<h5><strong>店铺动态评分(满分5分)</strong></h5>
+						            <ul class="rate">
+						              <li>描述相符：<span >${storeInfo.store_desccredit!'5'}分</span></li>
+						              <li>服务态度：<span >${storeInfo.store_servicecredit!'5'}分</span></li>
+						              <li>发货速度：<span >${storeInfo.store_deliverycredit!'5'}分</span></li>
+						            </ul>
+	          					</div>
+					          	<dl class="messenger">
+					            	<dt>在线客服：</dt>
+									<dd>
+										<#if storeInfo.qq??>
+								  			 	<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=${storeInfo.qq!''}&amp;site=qq&amp;menu=yes"><img src="http://wpa.qq.com/pa?p=2:1234567:52" alt=""></a>
+										</#if>
+					      			 </dd>
+					          	</dl>
+         							<div class="goto" id="shop-other"> 
+         								<a href="${ctx}/home.html?show_c=1&store_id=${storeInfo.store_id}" target="_blank">进入商家店铺</a>
+         							</div>
+       						</div>
+     					</div>
+    				</div>
+     			</div>
+      			<div class="clear"></div>
+    		</section>
+    		<section class="layout expanded nc-main" >
+      			<article class="nc-goods-main">
+					<div  id="main-nav-holder">
+					
+        				<nav class="tabbar pngFix" id="main-nav">
+          					<div class="pr" style="z-index: 70;">
+	            				<ul id="categorymenu">
+	              					<li class="current" tab="tabGoodsIntro"><a href="javascript:void(0);" ><span>商品详情</span></a></li>
+	              					<li tab="tabGoodsRate"><a  href="javascript:void(0);"><span>商品评论</span></a></li>
+	              					<li tab="tabGoodsTraded"><a  href="javascript:void(0);"><span>销售记录</span></a></li>
+	              					<li tab="tabGuestbook"><a  href="javascript:void(0);"><span>产品咨询</span></a></li>
+	            				</ul>
+            					<div class="switch-bar"><a href="javascript:void(0)" id="abc">&nbsp;</a></div>
+            					<div class="gotop"><a href="#header">&nbsp;</a></div>
+          					</div>
+        				</nav>
+        				
+       				<section class="nc-s-c-s4 tabGoodsIntro">
+			          <div id="ncGoodsIntro" class="content bd" style="">
+			          		
+	                        <div class="default">${goods.intro!''}</div>
+			          </div>
+			        </section>
+				        
+        			<section class="nc-s-c-s4 tabGoodsRate">
+        				<div id="discuss_wrapper" class="content">
+        					<!-- 评论列表 -->
+							<#include 'detail/discuss_list.html'/>
+							<!--发表评论-->				
+							<#include 'detail/discuss_form.html'/>
+						</div>
+        			</section>
+        			
+        			<section class="nc-s-c-s4 tabGoodsTraded">
+        				<div class="content">
+	        				<!--商品成交记录-->
+							<#include 'detail/transaction.html'/>
+						</div>
+        			</section>
+        			<section class="nc-s-c-s4 tabGuestbook">
+        				<div class="content bd">
+							<!--商品咨询列表-->
+							<#include 'detail/ask_list.html'/>
+							<!--商品咨询表单-->				
+							<#include 'detail/ask_form.html'/>
+						</div>
+        			</section>
+                	<section class="nc-s-c-s2 ncg-com-list">
+          				<div class="title">
+            				<h4>推荐商品</h4>
+          				</div>
+          				<div class="content">
+            				<ul>
+                             	<li>
+									<dl>
+										<dt class="goods-name"><a href="#" target="_blank" title="金士顿TF 8G卡">金士顿TF 8G卡<em></em></a></dt>
+										<dd class="goods-pic"><a href="#" target="_blank" title=""><img src="#" alt="金士顿TF 8G卡"></a></dd>
+										<dd class="goods-price">商&nbsp;城&nbsp;价：<em class="price">&yen;99.00</em></dd>
+									</dl>
+			   					</li>
+                           	</ul>
+							<div class="clear"></div>
+          				</div>
+        			</section>
+        		</div>
+      		</article>
+      		<aside class="nc-sidebar">
+      			<#assign store_id=storeInfo.store_id />
+				<#include 'home/store_basic.html' />
+      		</aside>
+	  		<div class="clear"></div>
+    	</section>
+  	</article>
+</div>
+<div class="clear"></div>
+<div class="add_success_msg" style="display:none">
+	<div >
+		<div class="goods_message">
+			恭喜，该商品已添加到您的购物车！
+		</div>
+		<div class="button_wrapper">
+			<div class="btn"><input type="button" class="returnbuy_btn" value="继续购物"></div>
+			<div class="btn"><input type="button" class="checkout_btn" value="去结算"></div>
+		</div>
+	</div>	
+</div>
+<script type="text/javascript">
+$(function(){
+	$(".nc-s-c-s4").hide();
+	$(".tabGoodsIntro").show();
+	$("#categorymenu li").click(function(){
+		$("#categorymenu li").removeClass("current");
+		$(".nc-s-c-s4").hide();
+		$(this).addClass("current");
+		$("."+$(this).attr("tab")).show();;
+	});
+	
+	//相册缩略图滑动
+	 <#if galleryList?size gt 4 > 
+		$("#detail_wrapper .gallery .thumblist").jCarouselLite({
+	        btnNext: ".left-control",
+	        btnPrev: ".right-control",
+			visible:4
+	    });
+	</#if> 
+
+	//相册放大切换
+	$("#detail_wrapper .gallery .thumblist li").click(function(){
+		var $this = $(this);
+		var img  = $this.children("img");
+		var zoom = document.getElementById('zoom'); //get the reference to our zoom object
+	    MagicZoom.update(zoom, img.attr("big"), img.attr("small"), 'show-title: false'); 
+		$this.addClass("selected").siblings().removeClass("selected");
+	});	 
+})
+</script>
+
+<!-----footer------>
+<#include 'common/footer.html'/>

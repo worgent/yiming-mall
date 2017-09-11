@@ -1,0 +1,41 @@
+<style>
+.subNavBox{width:100px;border:solid 1px #e5e3da;margin:100px auto;}
+.subNav{border-bottom:solid 1px #e5e3da;cursor:pointer;font-weight:bold;font-size:14px;color:#999;line-height:28px;padding-left:10px;background:url(images/jiantou1.jpg) no-repeat;background-position:95% 50%}
+.subNav:hover{color:#277fc2;}
+.currentDd{color:#277fc2}
+.currentDt{background-image:url(images/jiantou.jpg);}
+.navContent{display: none;border-bottom:solid 1px #e5e3da;}
+.navContent li a{display:block;width:100px;heighr:28px;text-align:center;font-size:14px;line-height:28px;color:#333}
+.navContent li a:hover{color:#fff;background-color:#277fc2}
+</style>
+<script type="text/javascript">
+$(function(){
+	$(".subNav").click(function(){
+		$(this).toggleClass("currentDd").siblings(".subNav").removeClass("currentDd")
+		$(this).toggleClass("currentDt").siblings(".subNav").removeClass("currentDt")
+		$(this).next(".navContent").slideToggle(300).siblings(".navContent").slideUp(500)
+	})	
+})
+</script>
+
+<!-- 创建店铺优惠券标签 -->
+<#assign storeBonusListTag= newTag("storeBonusListTag")>
+<!-- 调用查询店铺优惠券标签 -->
+<#assign storeBonusList = storeBonusListTag("{'store_id':${store_id!0}}")!''>
+
+<div class="subNavBox" style="position: fixed;top: 100px;right: 10px;background: white;">
+   <div class="subNav currentDd currentDt">优惠券</div>
+   <ul class="navContent " style="display:block">	
+   		<#list storeBonusList as sbl>
+       	<li><a href="${ctx}/api/b2b2c/promotion!receiveBonus.do?store_id=${store_id}&type_id=${sbl.type_id}">${sbl.type_name}</a></li>
+       	</#list>
+    </ul>
+	<div class="subNav">售前售后</div>
+    <ul class="navContent">
+       	<li><a href="#">售前1</a></li>
+       	<li><a href="#">售前2</a></li>
+       	<li><a href="#">售后1</a></li>
+       	<li><a href="#">售后2</a></li>
+    </ul>
+	
+</div>

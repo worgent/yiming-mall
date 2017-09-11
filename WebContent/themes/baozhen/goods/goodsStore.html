@@ -1,0 +1,28 @@
+<#assign goodsStoreTag=newTag("goodsStoreTag")>
+<#assign goodsStore=goodsStoreTag("{'goods_id':${goods_id}}")>
+<style>
+h2{
+	font-size: 18px;font-weight: bold;
+}
+#goodsStore tr td{
+	padding-left: 10px;
+}
+</style>
+<h2>商品库存信息</h2>
+<form id="goodsStoreForm">
+	<input type="hidden" name="goods_id" value="${goods_id}">
+	<table  cellspacing="0" cellpadding="0" width="100%" id="goodsStore">
+		<tr>
+			<th>库存数量：</th>
+			<td>
+				<#if goodsStore.store??>
+					<input type="text" name="store" value="${goodsStore.store.store}"/>
+					<input type="hidden" name="storeid" value="${goodsStore.store.storeid!'0'}"/>
+					<#else>
+					<input type="text" name="store" value="0"/>
+					<input type="hidden" name="storeid" value="0"/>
+				</#if>
+			</td>
+		</tr>
+	</table>
+</form>

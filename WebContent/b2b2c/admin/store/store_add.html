@@ -1,0 +1,95 @@
+<#assign regionSelectDirective="com.enation.app.base.component.widget.regions.RegionSelectDirective"?new()>
+<#assign dataformat="com.enation.framework.directive.DateformateDirective"?new()/>
+
+<style>
+.input_text {
+	width: 200px;
+}
+</style>
+<div class="main" style="background-color: white;">
+	<div class="easyui-panel" style="border-style: none;">
+		<div style="padding: 10px 0 10px 20px">
+			<form id="addForm" method="post" class="validate">
+				<input type="hidden" name="name_auth" value="0">
+				<input type="hidden" name="store_auth" value="0">
+				<table>
+					<tr>
+						<td>店铺账号：</td>
+						<td>
+							<input class="input_text easyui-validatebox" type="text" name="member_name" value="" />
+						</td>
+						<td style="padding-left: 30px;">身份证号：</td>
+						<td>
+							<input class="input_text easyui-validatebox" type="text" name="id_number" data-options="required:true" value=""></input>
+						</td>
+					</tr>
+					<tr>
+						<td>店铺名称：</td>
+						<td><input class="input_text easyui-validatebox" type="text"
+							data-options="required:true" name="store_name"
+							value=""></input>
+						</td>
+
+						<td style="padding-left: 30px;">所属分类：</td>
+						<td><input class="input_text easyui-combotree combo"
+							value="0" name="store_type"
+							data-options="url:'',method:'get',height:28">
+						</td>
+					</tr>
+					<tr>
+						<td>所在地：</td>
+						<td width="250px;"><@regionSelectDirective /></td>
+
+						<td style="padding-left: 30px;">详细地址：</td>
+						<td><input class="input_text easyui-validatebox" type="text" name="attr" value=""></input></td>
+					</tr>
+					<tr>
+						<td>邮编：</td>
+						<td><input class="input_text easyui-validatebox" type="text"
+							name="zip" value=""></input></td>
+						<td style="padding-left: 30px;">联系电话：</td>
+						<td><input class="input_text easyui-validatebox" type="text"
+							name="tel" value=""></input></td>
+					</tr>
+					<tr>
+						<td>所属等级：</td>
+						<td>
+							<select name="store_level" class="easyui-validatebox">
+								<#if level_list??> 
+									<#list level_list as lv>
+										<option value="${lv.level_id }">${lv.level_name }</option> 
+									</#list> 
+								</#if>
+							</select>
+						</td>
+						<!-- <td style="padding-left: 30px;">有效期至：</td>
+						<td><input class="input_text easyui-datebox" type="text"
+							name="end_time" value="<@dataformat time="now" pattern="yyyy-MM-dd" />" style="height: 28px;"></input></td> -->
+					</tr>
+					<tr>
+						<td>状态：</td>
+						<td>
+							<select name="disabled">
+								<option value="1" >开启</option>
+								<option value="0" >关闭</option>
+							</select>
+						</td>
+						<td style="padding-left: 30px;">推荐：</td>
+						<td>
+							<select name="store_recommend">
+								<option value="1">是</option>
+								<option value="0">否</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>排序：</td>
+						<td><input class="input_text easyui-validatebox" type="text"
+							name="sort" value=""></input></td>
+					</tr>
+				</table>
+				<input type="hidden" name="storeId" value="">
+			</form>
+		</div>
+	</div>
+</div>
